@@ -1,4 +1,4 @@
-// import "./App.css";
+import "./App.css";
 import Toggle from "./component/Toggle";
 
 function App() {
