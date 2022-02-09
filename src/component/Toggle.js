@@ -10,15 +10,20 @@ const ToggleBlock = styled.div`
   cursor: pointer;
   margin-top: 20px;
   margin-bottom: 10px;
+  box-sizing: border-box;
+  height: 2em;
 
   ::before {
     content: "";
     display: flex;
-    width: 0px;
     height: 2em;
+    width: 15px;
+    opacity: 0;
     border-radius: 20px;
     background-color: #6741d9;
     position: absolute;
+    box-sizing: border-box;
+    transition: all 0.3s;
   }
 
   ::after {
@@ -36,21 +41,13 @@ const ToggleBlock = styled.div`
     toggle &&
     css`
       ::before {
+        opacity: 1;
         width: 80px;
-        transition: width 0.3s ease-in;
       }
       ::after {
         transform: translateX(45px);
       }
     `}
-`;
-
-const ToggleCircle = styled.div`
-  display: flex;
-  border-radius: 1.5em;
-  width: 1.5em;
-  height: 1.5em;
-  background-color: white;
 `;
 
 function Toggle() {
@@ -62,9 +59,7 @@ function Toggle() {
 
   return (
     <>
-      <ToggleBlock onClick={onToggle} toggle={toggle}>
-        {/* <ToggleCircle></ToggleCircle> */}
-      </ToggleBlock>
+      <ToggleBlock onClick={onToggle} toggle={toggle} />
       <div>Toggle Switch {toggle ? "ON" : "OFF"}</div>
     </>
   );
