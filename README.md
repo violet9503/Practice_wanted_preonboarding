@@ -2,6 +2,8 @@
 
 ---
 
+https://codestates.notion.site/5f83f7a007664f1abcf0cdbcbbbbd521 사이트의 컴포넌트 직접 구현
+
 - 아래에 여섯 가지의 프론트엔드에서 자주 사용하는 컴포넌트 구현하기
   - Toggle.js
   - Modal.js
@@ -9,6 +11,21 @@
   - Tag.js
   - AutoComplete.js
   - ClickToEdit.js
+
+---
+
+## Toggle Component
+
+처음엔 'justify-content'의 값을 flex-start와 flex-end를 번갈아가며 수정하고, background-color를 아래와 같은 방법으로 구현.
+
+```
+${({ toggle }) =>
+    toggle &&
+    css`
+      justify-content: flex-end;
+      background-color: #6741d9;
+    `}
+```
 
 ---
 
