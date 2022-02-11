@@ -62,7 +62,7 @@ const ModalButton = styled.div`
 `;
 
 function Modal() {
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
 
   const onModal = () => {
     setModal((prevState) => !prevState);

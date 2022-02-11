@@ -59,6 +59,30 @@ left: 0;
 
 ---
 
+## Tab Component
+
+단순 구현은 쉬울 것 같아 Tab 개수 설정에 따라 맞춤 컴포넌트가 될 수 있도록 구현 진행했습니다.
+
+이 프로젝트에서는 예제 내용을 컴포넌트 내부 const 변수로 선언했지만, 실무에서는 redux 등의 전역 상태 관리 라이브러리 또는 props를 통해 받는다는 생각도 같이 하면서 구현했습니다.
+
+또한 아래와 같이 selected 프로퍼티를 꼭 넣어야만 컴포넌트가 작동하는 것이 아닌 useState를 통해 컴포넌트 내부에서 선택된 Tab 내용을 따로 관리해주었습니다.
+
+```
+const tabContents = [
+{ id: 1, content: "ONE", selected : true },
+{ id: 2, content: "TWO", selected : false },
+{ id: 3, content: "THREE", selected : false },
+];
+```
+
+추가로, Tab 개수에 따른 width 변경은 아래와 같이 구현을 해도 실제 적용이 된다는 점을 확인할 수 있었습니다.
+
+```
+width: ${(props) => 100 / props.count}%;
+```
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
