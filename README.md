@@ -83,6 +83,44 @@ width: ${(props) => 100 / props.count}%;
 
 ---
 
+## Tag Component
+
+관리해야 할 state들이 많아서 Reducer를 활용해도 좋았을 것 같다는 생각이 들었던 컴포넌트입니다.
+
+Tag들과 input이 나열되는 것은 'display : flex; flex-wrap: wrap;'를 활용하여 구현하였고,
+
+onFocus, onBlur 이벤트를 통해 input 포커스 시에 테두리 강조를 구현했습니다.
+
+다만, 구현할 때의 어려웠던 점은 enter 이벤트에 따른 tag 추가였는데, onKeyUp, onKeyPress, onKeyDown 이벤트 중
+
+onKeyPress는 Mozilla Web Docs에 따르면 deprecated로 권고된 이벤트이고,
+
+그 외에 onKeyUp과 onKeyDown의 경우는 한글을 입력할 시에 엔터가 두번 입력이 되는 이슈가 있었습니다.
+
+이는 한글 입력 시에 IME를 통해 입력이 되기 때문에 글자가 완성될때까지 컴포징이라는 단계를 거치게 됩니다.
+
+이때 컴포징이 진행중인 상황에서 enter를 입력하면 컴포징이 해제되면서 enter 이벤트가 한번 더 일어나 총 두번 엔터가 입력되게 됩니다.
+
+KeyboardEvent.isComposing 값을 통해 컴포징 여부를 확인할 수 있고,
+
+```
+* onKeyDown 시
+isComposing : true, event : enter
+isComposing : false, event : enter
+
+* onKeyUp 시
+isComposing : false, event : enter
+isComposing : false, event : enter
+```
+
+onKeyDown 이벤트의 isComposing을 통해 enter를 한번만 일어나게 할 수 있고, 영문일때(isComposing = false)도 고려해야 하므로
+
+isComposing이 true인 enter 이벤트는 무시하도록 개발했습니다.
+
+하지만 side effect가 있는지 확인이 필요한 부분입니다.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
