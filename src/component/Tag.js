@@ -3,12 +3,13 @@ import styled, { css } from "styled-components";
 
 const TagWrapper = styled.div`
   display: flex;
-  width: 30%;
+  width: 35%;
   border-radius: 5px;
   align-items: center;
   padding: 10px;
   flex-wrap: wrap;
   border: 1px solid #ddd;
+  box-sizing: border-box;
 
   ${({ focus }) =>
     focus &&

@@ -5,6 +5,7 @@ import Tab from "./component/Tab";
 import Tag from "./component/Tag";
 import Animate from "./Animate";
 import styled from "styled-components";
+import AutoComplete from "./component/AutoComplete";
 
 const ComponentWrapper = styled.div`
   display: flex;
@@ -32,6 +33,9 @@ function App() {
       </ComponentWrapper>
       <ComponentWrapper>
         <Tag />
+      </ComponentWrapper>
+      <ComponentWrapper>
+        <AutoComplete />
       </ComponentWrapper>
       <ComponentWrapper></ComponentWrapper>
       {/* <Animate /> */}
