@@ -38,6 +38,7 @@ function App() {
         <AutoComplete />
       </ComponentWrapper>
       <ComponentWrapper></ComponentWrapper>
+      <ComponentWrapper></ComponentWrapper>
       {/* <Animate /> */}
     </div>
   );

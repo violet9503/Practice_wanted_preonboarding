@@ -121,6 +121,34 @@ isComposing이 true인 enter 이벤트는 무시하도록 개발했습니다.
 
 ---
 
+## AutoComplete Component
+
+AutoComplete 컴포넌트에서 주요 구현 요소는 input value 값에 대해
+
+Array.prototype.filter(), String.prototype.includes() 메서드를 활용하여 이전 검색어들을 추천했습니다.
+
+이 때 아래와 같이 onChange, onClick 이벤트시에 비슷한 코드이므로 하나의 함수로 리팩토링하는 게 옳은 구현 방법인지 고민을 했습니다.
+
+```
+* onChange 시
+
+const inputValue = e.target.value;
+setInputs(inputValue);
+
+if (inputValue.length > 0)
+  setlists(history.filter((h) => h.content.includes(inputValue)));
+else setlists([]);
+
+
+* onClick 시
+
+setInputs(content);
+setlists(history.filter((h) => h.content.includes(content)));
+
+```
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
