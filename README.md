@@ -16,8 +16,10 @@ https://codestates.notion.site/5f83f7a007664f1abcf0cdbcbbbbd521 사이트의 컴
 
 ## Toggle Component
 
-처음엔 'justify-content'의 값을 flex-start, background-color를 회색으로 세팅
-'toggle' 상태 변화를 통해 flex-end, 보라색으로 아래와 같이 변화 시킴.
+<img src="./gif/Toggle.gif"></img>
+
+처음엔 아래 코드와 같이 'justify-content' : flex-start, 'background-color' : gray 세팅
+이후 'toggle' 상태 변화를 통해 flex-end, 보라색으로 변화 시켰지만 애니메이션 형태로 움직이지 않았습니다.
 
 ```
 justify-content: flex-start;
@@ -31,9 +33,9 @@ ${({ toggle }) =>
     `}
 ```
 
-이후에 animation 설정을 통해 구현해보려했지만 'toggle' 상태에 따라 변화시키는 것이 아닌 일방적으로 반복적인 애니메이션만 가능했습니다.
+따라서, animation 설정을 통해 구현해보려했지만 'toggle' 상태에 따라 변화시키는 것이 아닌 자동으로 반복하는 애니메이션만 가능했습니다.
 
-따라서 아래와 같이 transition을 기본 css에 적용하고, 'toggle' 상태 변화에 따라 width 수치 변경하여 구현 성공.
+따라서 아래와 같이 transition을 기본 css에 적용하고, 'toggle' 상태 변화에 따라 width 수치 변경하여 최종 구현했습니다.
 
 ```
 transition: all 0.3s;                   /* progress bar */
@@ -43,6 +45,8 @@ transition: transform 0.3s ease-in-out; /* toggle 버튼 */
 ---
 
 ## Modal Component
+
+<img src="./gif/Modal.gif"></img>
 
 뒷배경을 아래와 같이 구현하고 Dialog 메시지 박스를 children으로 쉽게 구현 가능했습니다.
 
@@ -60,6 +64,8 @@ left: 0;
 ---
 
 ## Tab Component
+
+<img src="./gif/Tab.gif"></img>
 
 단순 구현은 쉬울 것 같아 Tab 개수 설정에 따라 맞춤 컴포넌트가 될 수 있도록 구현 진행했습니다.
 
@@ -84,6 +90,8 @@ width: ${(props) => 100 / props.count}%;
 ---
 
 ## Tag Component
+
+<img src="./gif/Tag.gif"></img>
 
 관리해야 할 state들이 많아서 Reducer를 활용해도 좋았을 것 같다는 생각이 들었던 컴포넌트입니다.
 
@@ -123,6 +131,8 @@ isComposing이 true인 enter 이벤트는 무시하도록 개발했습니다.
 
 ## AutoComplete Component
 
+<img src="./gif/AutoComplete.gif"></img>
+
 AutoComplete 컴포넌트에서 주요 구현 요소는 input value 값에 대해
 
 Array.prototype.filter(), String.prototype.includes() 메서드를 활용하여 이전 검색어들을 추천했습니다.
@@ -146,6 +156,27 @@ setInputs(content);
 setlists(history.filter((h) => h.content.includes(content)));
 
 ```
+
+---
+
+## ClickToEdit Component
+
+<img src="./gif/ClickToEdit.gif"></img>
+
+ClickToEdit 컴포넌트는 간단한 입력 컴포넌트 정도의 난이도였기 때문에 쉽게 구현할 수 있었고,
+
+아래 코드와 같이 input name 별로 value 값을 저장할 수 있도록 'computed property names'을 활용했습니다.
+
+```
+const onChange = (e) => {
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      [e.target.name]: e.target.value
+    }));
+  };
+```
+
+또한 변경 가능한 input value 기본값을 설정하기 위해 'defaultValue'라는 프로퍼티를 활용했습니다.
 
 ---
 

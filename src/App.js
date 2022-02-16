@@ -6,6 +6,7 @@ import Tag from "./component/Tag";
 import Animate from "./Animate";
 import styled from "styled-components";
 import AutoComplete from "./component/AutoComplete";
+import ClickToEdit from "./component/ClickToEdit";
 
 const ComponentWrapper = styled.div`
   display: flex;
@@ -37,7 +38,9 @@ function App() {
       <ComponentWrapper>
         <AutoComplete />
       </ComponentWrapper>
-      <ComponentWrapper></ComponentWrapper>
+      <ComponentWrapper>
+        <ClickToEdit />
+      </ComponentWrapper>
       <ComponentWrapper></ComponentWrapper>
       {/* <Animate /> */}
     </div>
