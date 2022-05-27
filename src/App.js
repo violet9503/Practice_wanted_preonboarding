@@ -3,10 +3,10 @@ import Toggle from "./component/Toggle";
 import Modal from "./component/Modal";
 import Tab from "./component/Tab";
 import Tag from "./component/Tag";
-import Animate from "./Animate";
 import styled from "styled-components";
 import AutoComplete from "./component/AutoComplete";
 import ClickToEdit from "./component/ClickToEdit";
+import ToggleAnother from "./component/Toggle_another";
 
 const ComponentWrapper = styled.div`
   display: flex;
@@ -25,6 +25,9 @@ function App() {
     <div className="App">
       <ComponentWrapper>
         <Toggle />
+      </ComponentWrapper>
+      <ComponentWrapper>
+        <ToggleAnother />
       </ComponentWrapper>
       <ComponentWrapper>
         <Modal />
